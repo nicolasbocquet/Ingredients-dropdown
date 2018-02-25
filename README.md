@@ -6,5 +6,6 @@ No framework, no preprocessing, no transpiling : just some plain classic HTML, C
 https://codepen.io/nicolas-bocquet/pen/OQQyxd
 
 ## HTML attributes requirements
-<elementButton **aria-controls="X"** ...></elementButton>
-<elementMenu **id="X"** ...></elementMenu>
+Associate **aria-controls** attribute value on the button with the menu **id** attribute value
+`<elementButton aria-controls="X" ...></elementButton>`
+`<elementMenu id="X" ...></elementMenu>`
