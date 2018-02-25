@@ -3,7 +3,7 @@ An accessible dropdown widget, with no dependencies. No framework, no preprocess
 
 Based on the design pattern described by this [WAI-ARIA Authoring Practices Document](https://www.w3.org/TR/wai-aria-practices-1.1/#menubutton)
 
-Browser compatibilities :
+Browsers compatibility :
 IE11, Edge, Firefox, Chrome, Safari, etc
 
 ## Codepen Example
