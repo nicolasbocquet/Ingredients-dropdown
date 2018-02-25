@@ -1,5 +1,5 @@
 # Ingredients-dropdown
-An accessible dropdown widget, with no dependencies. No framework, no preprocessing, no transpiling : just some plain classic HTML, CSS and Javascript !
+An accessible dropdown widget, with no dependencies. No framework, no preprocessing, no transpiling : just some plain native HTML, CSS and Javascript !
 Also, adding multiple dropdowns on a page will work.
 
 Browser compatibilities :
