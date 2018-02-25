@@ -7,5 +7,7 @@ https://codepen.io/nicolas-bocquet/pen/OQQyxd
 
 ## HTML attributes requirements
 Associate **aria-controls** attribute value on the button with the menu **id** attribute value
-`<elementButton aria-controls="X" ...></elementButton>`
-`<elementMenu id="X" ...></elementMenu>`
+`
+<elementButton aria-controls="X" ...></elementButton>
+<elementMenu id="X" ...></elementMenu>
+`
