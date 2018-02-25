@@ -6,7 +6,5 @@ No framework, no preprocessing, no transpiling : just some plain classic HTML, C
 https://codepen.io/nicolas-bocquet/pen/OQQyxd
 
 ## HTML attributes requirements
-```
 <elementButton **aria-controls="X"** ...></elementButton>
 <elementMenu **id="X"** ...></elementMenu>
-```
