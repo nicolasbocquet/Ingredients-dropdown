@@ -18,11 +18,11 @@ Associate **aria-controls** attribute value on the button with the menu **id** a
 ## CSS requirements
 ```
 {menu selector} {
-	display:none;
+  display:none;
 }
 
 .isOpen {
-	display:block;
+  display:block;
 }
 ```
 
