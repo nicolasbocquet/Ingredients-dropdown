@@ -1,6 +1,7 @@
 # Ingredients-dropdown
 An accessible dropdown widget, with no dependencies. No framework, no preprocessing, no transpiling : just some plain native HTML, CSS and Javascript !
-Also, adding multiple dropdowns on a page will work.
+
+Based on the design pattern described by this [WAI-ARIA Authoring Practices Document](https://www.w3.org/TR/wai-aria-practices-1.1/#menubutton)
 
 Browser compatibilities :
 IE11, Edge, Firefox, Chrome, Safari, etc
