@@ -6,8 +6,7 @@ Based on the design pattern described by this [WAI-ARIA Authoring Practices Docu
 Browsers compatibility :
 IE11, Edge, Firefox, Chrome, Safari, etc
 
-## Codepen Example
-https://codepen.io/nicolas-bocquet/pen/OQQyxd
+[Codepen Example](https://codepen.io/nicolas-bocquet/pen/OQQyxd)
 
 ## HTML attributes requirements
 Associate **aria-controls** attribute value on the button with the menu **id** attribute value
