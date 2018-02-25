@@ -34,8 +34,7 @@ function ingredientsDropdown() {
 				
 		// Listeners
 		function _buttonKeyboardListener(event) {	
-			if (!$button.getAttribute('aria-expanded')) {	
-					
+			if (!$button.getAttribute('aria-expanded')) {						
 				switch (event.which) {
 					case keyCodes.ENTER :
 					case keyCodes.SPACE :
@@ -50,9 +49,17 @@ function ingredientsDropdown() {
 						break;
 				}
 			}
+			else {
+				switch (event.which) {
+					case keyCodes.ESCAPE :
+						close();
+						$button.focus();
+						break;
+				}
+			}
 		}
 		
-		function _buttonClickListener(event) {
+		function _buttonClickListener() {
 			if ($button.getAttribute('aria-expanded')) {
 				close();
 			}
