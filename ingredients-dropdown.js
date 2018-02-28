@@ -20,7 +20,7 @@ function ingredientsDropdown() {
 		  'END': 35
 		};
 		
-	$buttons.forEach(function($button) {
+	[].forEach.call($buttons, function($button) {
 		// Find the primary elements
 		var $menu = document.getElementById($button.getAttribute('aria-controls')),
 			$menuFocusableElements = $menu.querySelectorAll(focusable),
@@ -131,9 +131,9 @@ function ingredientsDropdown() {
 			$menu.classList.add(options.classOpened);
 			
 			// Add events on opening
-			document.addEventListener('mousedown', _outsideClickListener, true);
-			document.addEventListener('touchstart', _outsideClickListener, true);
-			$menu.addEventListener('keydown', _insideKeyboardListener, true);
+			document.addEventListener('mousedown', _outsideClickListener);
+			document.addEventListener('touchstart', _outsideClickListener);
+			$menu.addEventListener('keydown', _insideKeyboardListener);
 		}
 			
 		function close() {		
@@ -142,9 +142,9 @@ function ingredientsDropdown() {
 			$menu.classList.remove(options.classOpened);
 			
 			// Remove events on closing
-			document.removeEventListener('mousedown', _outsideClickListener, true);	
-			document.removeEventListener('touchstart', _outsideClickListener, true);
-			$menu.removeEventListener('keydown', _insideKeyboardListener, true);
+			document.removeEventListener('mousedown', _outsideClickListener);	
+			document.removeEventListener('touchstart', _outsideClickListener);
+			$menu.removeEventListener('keydown', _insideKeyboardListener);
 		}	
 	
 		function focusMenuItem(target, event) {
