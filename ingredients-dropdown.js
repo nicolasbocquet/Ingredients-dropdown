@@ -31,8 +31,18 @@ function ingredientsDropdown() {
 		$button.addEventListener('mousedown', _buttonClickListener);
 		$button.addEventListener('touchstart', _buttonClickListener);
 		$button.addEventListener('keydown', _buttonKeyboardListener);
-				
+		
 		// Listeners
+		function _buttonClickListener(event) {
+			if (!$button.getAttribute('aria-expanded')) {
+				open();
+				focusMenuItem("first", event);
+			}
+			else {
+				close();
+			}	
+		}
+						
 		function _buttonKeyboardListener(event) {	
 			if (!$button.getAttribute('aria-expanded')) {						
 				switch (event.which) {
@@ -59,20 +69,11 @@ function ingredientsDropdown() {
 			}
 		}
 		
-		function _buttonClickListener() {
-			if ($button.getAttribute('aria-expanded')) {
-				close();
-			}
-			else {
-				open();
-			}	
-		}
-		
 		function _insideKeyboardListener(event) {	
 			switch (event.which) {
 				case keyCodes.ESCAPE :
-						close();
-						$button.focus();
+					close();
+					$button.focus();
 					break;
 					
 				case keyCodes.ENTER :
@@ -150,13 +151,13 @@ function ingredientsDropdown() {
 		function focusMenuItem(target, event) {
 			event.preventDefault();
 			
-			var	index = Array.prototype.indexOf.call($menuFocusableElements, event.target), // indexOf can't read an nodeList
+			var	index = [].indexOf.call($menuFocusableElements, event.target), // indexOf can't read an nodeList
 				$previousFocusableElement = $menuFocusableElements[index - 1],
 				$nextFocusableElement = $menuFocusableElements[index + 1];
 			
 			switch (target) {
-				case "first" :		
-					$firstFocusableElement.focus();	
+				case "first" :	
+					$firstFocusableElement.focus();
 					break;
 					
 				case "last" :
