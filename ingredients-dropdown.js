@@ -36,30 +36,28 @@ function ingredientsDropdown() {
 		function _buttonClickListener(event) {
 			if (!$button.getAttribute('aria-expanded')) {
 				open();
-				focusMenuItem("first", event);
 			}
 			else {
 				close();
 			}	
 		}
 						
-		function _buttonKeyboardListener(event) {	
-			if (!$button.getAttribute('aria-expanded')) {						
-				switch (event.which) {
-					case keyCodes.ENTER :
-					case keyCodes.SPACE :
-					case keyCodes.DOWN :
-						open();
-						focusMenuItem("first", event);
-						break;
-					
-					case keyCodes.UP :
-						open();
-						focusMenuItem("last", event);				
-						break;
-				}
+		function _buttonKeyboardListener(event) {
+			switch (event.which) {
+				case keyCodes.ENTER :
+				case keyCodes.SPACE :
+				case keyCodes.DOWN :
+					open();
+					focusMenuItem("first", event);
+					break;
+				
+				case keyCodes.UP :
+					open();
+					focusMenuItem("last", event);				
+					break;
 			}
-			else {
+			
+			if ($button.getAttribute('aria-expanded')) {
 				switch (event.which) {
 					case keyCodes.ESCAPE :
 						close();
@@ -69,7 +67,7 @@ function ingredientsDropdown() {
 			}
 		}
 		
-		function _insideKeyboardListener(event) {	
+		function _menuKeyboardListener(event) {	
 			switch (event.which) {
 				case keyCodes.ESCAPE :
 					close();
@@ -134,7 +132,7 @@ function ingredientsDropdown() {
 			// Add events on opening
 			document.addEventListener('mousedown', _outsideClickListener);
 			document.addEventListener('touchstart', _outsideClickListener);
-			$menu.addEventListener('keydown', _insideKeyboardListener);
+			$menu.addEventListener('keydown', _menuKeyboardListener);
 		}
 			
 		function close() {		
@@ -145,7 +143,7 @@ function ingredientsDropdown() {
 			// Remove events on closing
 			document.removeEventListener('mousedown', _outsideClickListener);	
 			document.removeEventListener('touchstart', _outsideClickListener);
-			$menu.removeEventListener('keydown', _insideKeyboardListener);
+			$menu.removeEventListener('keydown', _menuKeyboardListener);
 		}	
 	
 		function focusMenuItem(target, event) {
@@ -155,7 +153,7 @@ function ingredientsDropdown() {
 				$previousFocusableElement = $menuFocusableElements[index - 1],
 				$nextFocusableElement = $menuFocusableElements[index + 1];
 			
-			switch (target) {
+			switch (target) {					
 				case "first" :	
 					$firstFocusableElement.focus();
 					break;
