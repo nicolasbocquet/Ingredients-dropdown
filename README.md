@@ -1,5 +1,7 @@
 # Ingredients-dropdown
-An accessible dropdown widget, with no dependencies. No framework, no preprocessing, no transpiling : just some plain native HTML, CSS and Javascript !
+An accessible and minimalist dropdown widget, with no dependencies. No framework, no preprocessing, no transpiling : just some plain native HTML, CSS and Javascript !
+
+If this ingredient is too raw for your needs, cook it to your sauce !
 
 Based on the design pattern described by this [WAI-ARIA Authoring Practices Document](https://www.w3.org/TR/wai-aria-practices-1.1/#menubutton)
 
@@ -11,8 +13,8 @@ IE11, Edge, Firefox, Chrome, Safari, etc
 ## HTML attributes requirements
 Associate **aria-controls** attribute value on the button with the menu **id** attribute value
 ```
-<elementButton aria-controls="X" ...></elementButton>
-<elementMenu id="X" ...></elementMenu>
+<button type="button" aria-controls="X" ...></button>
+<ANY id="X" ...></ANY>
 ```
 
 ## CSS requirements
