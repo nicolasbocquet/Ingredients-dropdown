@@ -4,11 +4,12 @@ function ingredientsDropdown() {
 	
 	var options = {
 		buttonSelector : '[data-dropdown="button"]',
-		classOpened : 'isOpen'
+		classOpened : 'isOpen',
+		focusable : '[href], input:not([type="hidden"]), button, select, textarea, [tabindex]:not([tabindex="-1"])',
+		closable : '[href], [type="button"], [type="submit"]'
 	};
 
 	var $buttons = document.querySelectorAll(options.buttonSelector),
-		focusable = '[href], input:not([type="hidden"]), select, textarea, [tabindex]:not([tabindex="-1"])',
 		keyCodes = {
 		  'TAB': 9,
 		  'ENTER': 13,
@@ -23,17 +24,17 @@ function ingredientsDropdown() {
 	[].forEach.call($buttons, function($button) {
 		// Find the primary elements
 		var $menu = document.getElementById($button.getAttribute('aria-controls')),
-			$menuFocusableElements = $menu.querySelectorAll(focusable),
+			$menuClosableElements = $menu.querySelectorAll(options.closable),
+			$menuFocusableElements = $menu.querySelectorAll(options.focusable),
 			$firstFocusableElement = $menuFocusableElements[0],
 			$lastFocusableElement = $menuFocusableElements[$menuFocusableElements.length - 1];
 
 		// Event Listening
 		$button.addEventListener('mousedown', _buttonClickListener);
-		$button.addEventListener('touchstart', _buttonClickListener);
 		$button.addEventListener('keydown', _buttonKeyboardListener);
 		
 		// Listeners
-		function _buttonClickListener(event) {
+		function _buttonClickListener() {
 			if (!$button.getAttribute('aria-expanded')) {
 				open();
 			}
@@ -43,7 +44,7 @@ function ingredientsDropdown() {
 		}
 						
 		function _buttonKeyboardListener(event) {
-			switch (event.which) {
+			switch (event.which) {		
 				case keyCodes.ENTER :
 				case keyCodes.SPACE :
 				case keyCodes.DOWN :
@@ -67,17 +68,21 @@ function ingredientsDropdown() {
 			}
 		}
 		
-		function _menuKeyboardListener(event) {	
+		function _menuClickListener(event) {
+			var isClosable = [].indexOf.call($menuClosableElements, event.target) !== -1; // .matches() polyfill
+			
+			if(isClosable) {
+				close();
+			}
+		}
+		
+		function _menuKeyboardListener(event) {
 			switch (event.which) {
 				case keyCodes.ESCAPE :
 					close();
 					$button.focus();
 					break;
-					
-				case keyCodes.ENTER :
-					close();
-					break;
-									
+
 				case keyCodes.DOWN :
 					focusMenuItem("next", event);
 					break;
@@ -131,7 +136,7 @@ function ingredientsDropdown() {
 			
 			// Add events on opening
 			document.addEventListener('mousedown', _outsideClickListener);
-			document.addEventListener('touchstart', _outsideClickListener);
+			$menu.addEventListener('click', _menuClickListener);
 			$menu.addEventListener('keydown', _menuKeyboardListener);
 		}
 			
@@ -142,7 +147,7 @@ function ingredientsDropdown() {
 			
 			// Remove events on closing
 			document.removeEventListener('mousedown', _outsideClickListener);	
-			document.removeEventListener('touchstart', _outsideClickListener);
+			$menu.removeEventListener('click', _menuClickListener);
 			$menu.removeEventListener('keydown', _menuKeyboardListener);
 		}	
 	
@@ -153,8 +158,8 @@ function ingredientsDropdown() {
 				$previousFocusableElement = $menuFocusableElements[index - 1],
 				$nextFocusableElement = $menuFocusableElements[index + 1];
 			
-			switch (target) {					
-				case "first" :	
+			switch (target) {
+				case "first" :
 					$firstFocusableElement.focus();
 					break;
 					
