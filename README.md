@@ -30,4 +30,4 @@ Associate **aria-controls** attribute value on the button with the menu **id** a
 * Attribute `data-dropdown="button"` on the element button
 * Class `isOpen` is added on the element menu when opening it
 * Focusable elements : `[href], input:not([type="hidden"]), button, select, textarea, [tabindex]:not([tabindex="-1"])`
-* Menu items elements that close the menu : `[href], [type="button"], [type="submit"]`
+* Menu items elements which close the menu : `[href], [type="button"], [type="submit"]`
