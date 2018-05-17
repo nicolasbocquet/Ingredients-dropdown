@@ -17,7 +17,7 @@ Associate **aria-controls** attribute value on the button with the menu **id** a
 
 ## CSS requirements
 ```
-{menu selector] {
+[menu selector] {
   display:none;
 }
 
