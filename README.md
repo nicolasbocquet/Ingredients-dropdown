@@ -1,5 +1,5 @@
 # Ingredients-dropdown
-An accessible and minimalist dropdown widget, with no dependencies, designed for every project. No framework, no preprocessing, no transpiling : just some plain native HTML, CSS and Javascript ! If this ingredient is too raw for your needs, cook it to your sauce !
+An accessible and minimalist dropdown widget, with no dependencies, designed for every project. No framework, no preprocessing, no transpiling : just copy-paste some plain native HTML, CSS and Javascript ! If this ingredient is too raw for your needs, cook it to your sauce !
 
 Based on the design pattern described by this [WAI-ARIA Authoring Practices Document](https://www.w3.org/TR/wai-aria-practices-1.1/#menubutton)
 
