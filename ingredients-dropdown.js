@@ -30,7 +30,7 @@ function ingredientsDropdown() {
 			$lastFocusableElement = $menuFocusableElements[$menuFocusableElements.length - 1];
 
 		// Event Listening
-		$button.addEventListener('mousedown', _buttonClickListener);
+		$button.addEventListener('click', _buttonClickListener);
 		$button.addEventListener('keydown', _buttonKeyboardListener);
 		
 		// Listeners
