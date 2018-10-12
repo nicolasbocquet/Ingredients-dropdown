@@ -7,6 +7,7 @@ Browsers compatibility :
 IE11, Edge, Firefox, Chrome, Safari, etc
 
 [Navigation Menu Example](https://codepen.io/nicolas-bocquet/pen/OQQyxd)
+
 [Application Menu Example](https://codepen.io/nicolas-bocquet/pen/Zqyddz)
 
 ## HTML attributes requirements
