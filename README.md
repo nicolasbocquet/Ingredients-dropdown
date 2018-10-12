@@ -6,7 +6,8 @@ Based on the design pattern described by this [WAI-ARIA Authoring Practices Docu
 Browsers compatibility :
 IE11, Edge, Firefox, Chrome, Safari, etc
 
-[Codepen Example](https://codepen.io/nicolas-bocquet/pen/OQQyxd)
+[Navigation Menu Example](https://codepen.io/nicolas-bocquet/pen/OQQyxd)
+[Application Menu Example](https://codepen.io/nicolas-bocquet/pen/Zqyddz)
 
 ## HTML attributes requirements
 Associate **aria-controls** attribute value on the button with the menu **id** attribute value
@@ -29,5 +30,5 @@ Associate **aria-controls** attribute value on the button with the menu **id** a
 ## Default Options
 * Attribute `data-dropdown="button"` on the element button
 * Class `isOpen` is added on the element menu when opening it
-* Focusable elements : `[href], input:not([type="hidden"]), button, select, textarea, [tabindex]:not([tabindex="-1"])`
+* Focusable menu items elements : `[href], input:not([type="hidden"]), button, select, textarea, [tabindex]:not([tabindex="-1"])`
 * Menu items elements which close the menu : `[href], [type="button"], [type="submit"]`
