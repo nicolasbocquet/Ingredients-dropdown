@@ -11,16 +11,19 @@ function ingredientsDropdown() {
 
 	var $buttons = document.querySelectorAll(options.buttonSelector),
 		keyCodes = {
-		  'TAB': 9,
-		  'ENTER': 13,
-		  'ESCAPE': 27,
-		  'SPACE': 32,
-		  'UP': 38,
-		  'DOWN': 40,
-		  'HOME': 36,
-		  'END': 35
+			'TAB': 9,
+			'ENTER': 13,
+			'ESCAPE': 27,
+			'SPACE': 32,
+			'UP': 38,
+			'DOWN': 40,
+			'HOME': 36,
+			'END': 35,
+			keyMap: {
+				48: "0", 49: "1", 50: "2", 51: "3", 52: "4", 53: "5", 54: "6", 55: "7", 56: "8", 57: "9", 59: ";", 65: "a", 66: "b", 67: "c", 68: "d", 69: "e", 70: "f", 71: "g", 72: "h", 73: "i", 74: "j", 75: "k", 76: "l", 77: "m", 78: "n", 79: "o", 80: "p", 81: "q", 82: "r", 83: "s", 84: "t", 85: "u", 86: "v", 87: "w", 88: "x", 89: "y", 90: "z", 96: "0", 97: "1", 98: "2", 99: "3", 100: "4", 101: "5", 102: "6", 103: "7", 104: "8", 105: "9", 190: "."
+			}
 		};
-		
+
 	[].forEach.call($buttons, function($button) {
 		// Find the primary elements
 		var $menu = document.getElementById($button.getAttribute('aria-controls')),
@@ -35,7 +38,7 @@ function ingredientsDropdown() {
 		
 		// Listeners
 		function _buttonClickListener() {
-			if (!$button.getAttribute('aria-expanded')) {
+			if ($button.getAttribute('aria-expanded') == 'false') {
 				open();
 			}
 			else {
@@ -44,7 +47,14 @@ function ingredientsDropdown() {
 		}
 						
 		function _buttonKeyboardListener(event) {
-			switch (event.which) {		
+			switch (event.which) {	
+				case keyCodes.ESCAPE :
+					if ($button.getAttribute('aria-expanded') == 'true') {
+						close();
+						$button.focus();
+					}
+					break;
+				
 				case keyCodes.ENTER :
 				case keyCodes.SPACE :
 				case keyCodes.DOWN :
@@ -55,16 +65,7 @@ function ingredientsDropdown() {
 				case keyCodes.UP :
 					open();
 					focusMenuItem("last", event);				
-					break;
-			}
-			
-			if ($button.getAttribute('aria-expanded')) {
-				switch (event.which) {
-					case keyCodes.ESCAPE :
-						close();
-						$button.focus();
-						break;
-				}
+					break;				
 			}
 		}
 		
@@ -76,7 +77,7 @@ function ingredientsDropdown() {
 			}
 		}
 		
-		function _menuKeyboardListener(event) {
+		function _menuKeyboardListener(event) {			
 			switch (event.which) {
 				case keyCodes.ESCAPE :
 					close();
@@ -117,6 +118,12 @@ function ingredientsDropdown() {
 										
 				default :
 					// Todo : Selection by chars
+					var character = event.key;
+					if ((character.length === 1) && (character.match(/\S/))) { // Is a printable character
+						console.log(event.target);
+						console.log(event.target.textContent.charAt(0));
+						//setFocusByFirstCharacter(character);
+					}
 					break;			
 			}
 			
@@ -135,18 +142,18 @@ function ingredientsDropdown() {
 			$menu.classList.add(options.classOpened);
 			
 			// Add events on opening
-			document.addEventListener('mousedown', _outsideClickListener);
+			document.addEventListener('click', _outsideClickListener);
 			$menu.addEventListener('click', _menuClickListener);
 			$menu.addEventListener('keydown', _menuKeyboardListener);
 		}
 			
 		function close() {		
-			$button.removeAttribute('aria-expanded');
+			$button.setAttribute('aria-expanded', 'false');
 			$button.classList.remove(options.classOpened);
 			$menu.classList.remove(options.classOpened);
 			
 			// Remove events on closing
-			document.removeEventListener('mousedown', _outsideClickListener);	
+			document.removeEventListener('click', _outsideClickListener);	
 			$menu.removeEventListener('click', _menuClickListener);
 			$menu.removeEventListener('keydown', _menuKeyboardListener);
 		}	
@@ -158,8 +165,8 @@ function ingredientsDropdown() {
 				$previousFocusableElement = $menuFocusableElements[index - 1],
 				$nextFocusableElement = $menuFocusableElements[index + 1];
 			
-			switch (target) {
-				case "first" :
+			switch (target) {					
+				case "first" :	
 					$firstFocusableElement.focus();
 					break;
 					
@@ -186,5 +193,5 @@ function ingredientsDropdown() {
 					break;
 			}
 		}
-	});	
+	});
 }
